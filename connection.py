@@ -23,9 +23,9 @@ def getResponse(url):
 
 def getMemberTable(clantag):
     clantag = urlTag(clantag)
-    response_data = getResponse(f"https://api.clashofclans.com/v1/clans/{clantag}")
+    responseData = getResponse(f"https://api.clashofclans.com/v1/clans/{clantag}")
     memberDict = {"name" : [], "tag" : [], "role" : [], "townHallLevel" : [], "trophies" : [], "clanRank" : [], "donationsReceived" : [], "donations" : [], "expLevel" : []}
-    rawMemberList = response_data["memberList"]
+    rawMemberList = responseData["memberList"]
     for i in range(len(rawMemberList)):
         for col in memberDict:
             memberDict[col].append(rawMemberList[i][col])
@@ -35,7 +35,12 @@ def getMemberTable(clantag):
 
 def getClantable(clantag):
     clantag = urlTag(clantag)
-    response_data = getResponse(f"{baseUrl}clans/{clantag}")
+    responseData = getResponse(f"{baseUrl}clans/{clantag}")
+    clan_data = {"tag" : [], "name" : [], "members" = [], "clanLevel" : [], "warWins" : [], "warTies" : [], "warLosses": [], "isWarLogPublic" : []}
+        for col in clanData:
+            clanData[col].append(responseData[col])
+    clanData = pd.DataFrame(clanData)
+    return clanData
 
 def addWar(clantag):
     clantag = urlTag(clantag)
