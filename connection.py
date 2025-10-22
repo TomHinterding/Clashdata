@@ -36,9 +36,9 @@ def getMemberTable(clantag):
 def getClantable(clantag):
     clantag = urlTag(clantag)
     responseData = getResponse(f"{baseUrl}clans/{clantag}")
-    clan_data = {"tag" : [], "name" : [], "members" = [], "clanLevel" : [], "warWins" : [], "warTies" : [], "warLosses": [], "isWarLogPublic" : []}
-        for col in clanData:
-            clanData[col].append(responseData[col])
+    clan_data = {"tag" : [], "name" : [], "members" : [], "clanLevel" : [], "warWins" : [], "warTies" : [], "warLosses": [], "isWarLogPublic" : []}
+    for col in clanData:
+        clanData[col].append(responseData[col])
     clanData = pd.DataFrame(clanData)
     return clanData
 
