@@ -28,3 +28,6 @@ class Datamanager:
 class Dataupdater:
     def __init__ (self):
         self.ds = ds()
+
+    def updateTable(self, Tablename):
+        pass
